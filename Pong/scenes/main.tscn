@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://ceu771rqxpk0b"]
+
+[ext_resource type="PackedScene" uid="uid://bkgsgplmdrdk4" path="res://scenes/ball.tscn" id="1_o5qli"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_o5qli"]
+b = Vector2(0, 648)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_0wfyh"]
+b = Vector2(0, 648)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_sugp2"]
+b = Vector2(1152, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jyhfs"]
+b = Vector2(1152, 0)
+
+[node name="Main" type="Node2D"]
+
+[node name="Ball" parent="." instance=ExtResource("1_o5qli")]
+position = Vector2(112, 48)
+speed = 200
+
+[node name="WallsStaticBody" type="StaticBody2D" parent="."]
+
+[node name="LeftWall" type="CollisionShape2D" parent="WallsStaticBody"]
+shape = SubResource("SegmentShape2D_o5qli")
+
+[node name="RightWall" type="CollisionShape2D" parent="WallsStaticBody"]
+position = Vector2(1152, 0)
+shape = SubResource("SegmentShape2D_0wfyh")
+
+[node name="Bottom" type="CollisionShape2D" parent="WallsStaticBody"]
+position = Vector2(0, 648)
+shape = SubResource("SegmentShape2D_sugp2")
+
+[node name="Up" type="CollisionShape2D" parent="WallsStaticBody"]
+shape = SubResource("SegmentShape2D_jyhfs")
