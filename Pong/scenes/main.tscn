@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ceu771rqxpk0b"]
+[gd_scene load_steps=8 format=3 uid="uid://ceu771rqxpk0b"]
 
 [ext_resource type="PackedScene" uid="uid://bkgsgplmdrdk4" path="res://scenes/ball.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://coimwreiboshf" path="res://scenes/Paddle.tscn" id="2_sugp2"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_o5qli"]
 b = Vector2(0, 648)
@@ -14,11 +15,40 @@ b = Vector2(1152, 0)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jyhfs"]
 b = Vector2(1152, 0)
 
+[sub_resource type="GDScript" id="GDScript_g4aya"]
+script/source = "extends Node2D
+
+@export var speed: float = 400.0
+@export var up_action: String = \"p1_up\"
+@export var down_action: String = \"p1_down\"
+
+var top_limit: float
+var bottom_limit: float
+
+func _ready():
+	var rect = get_viewport_rect()
+	var half_height = $CollisionShape2D.shape.extents.y
+	top_limit = half_height + 4
+	bottom_limit = rect.size.y - half_height - 4
+
+func _process(delta):
+	var direction := 0.0
+	if Input.is_action_pressed(up_action):
+		direction -= 1
+	if Input.is_action_pressed(down_action):
+		direction += 1
+
+	position.y += direction * speed * delta
+
+	# ограничение, чтобы не выходить за экран
+	position.y = clamp(position.y, top_limit, bottom_limit)
+"
+
 [node name="Main" type="Node2D"]
 
 [node name="Ball" parent="." instance=ExtResource("1_o5qli")]
-position = Vector2(112, 48)
-speed = 200
+position = Vector2(368, 102)
+speed = 400.0
 
 [node name="WallsStaticBody" type="StaticBody2D" parent="."]
 
@@ -35,3 +65,13 @@ shape = SubResource("SegmentShape2D_sugp2")
 
 [node name="Up" type="CollisionShape2D" parent="WallsStaticBody"]
 shape = SubResource("SegmentShape2D_jyhfs")
+
+[node name="PaddleRight" parent="." instance=ExtResource("2_sugp2")]
+position = Vector2(998, 118)
+script = SubResource("GDScript_g4aya")
+up_action = "p2_up"
+down_action = "p2_down"
+
+[node name="PaddleLeft" parent="." instance=ExtResource("2_sugp2")]
+position = Vector2(144, 72)
+script = SubResource("GDScript_g4aya")
