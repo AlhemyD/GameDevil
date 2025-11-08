@@ -18,6 +18,8 @@ func _ready():
 	reset_ball()
 
 func _process(delta: float) -> void:
+	if global.game_ended:
+		return
 	var next_pos = global_position + velocity * delta
 
 	# верх/низ экрана
@@ -51,7 +53,12 @@ func _process(delta: float) -> void:
 				next_pos.x = paddle_pos.x - paddle_shape.extents.x - size.x/2
 
 	# левая и правая границы — сброс мяча
-	if next_pos.x - size.x/2 < 0 or next_pos.x + size.x/2 > window.size.x:
+	if next_pos.x - size.x/2 < 0:
+		global.count_right+=1
+		reset_ball()
+		return
+	if next_pos.x + size.x/2 > window.size.x:
+		global.count_left+=1
 		reset_ball()
 		return
 
