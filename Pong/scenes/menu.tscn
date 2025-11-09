@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba37plnvujw2v"]
+[gd_scene load_steps=5 format=3 uid="uid://ba37plnvujw2v"]
 
 [ext_resource type="Script" uid="uid://2ngdp4quyncn" path="res://scripts/menu.gd" id="1_yqeox"]
+[ext_resource type="Texture2D" uid="uid://5vgand2e22qs" path="res://assets/background.jpg" id="2_mhnvy"]
 [ext_resource type="FontFile" uid="uid://cpnhii765sy4o" path="res://assets/atariclassic-regular.ttf" id="2_vjb58"]
+[ext_resource type="Texture2D" uid="uid://rvprxbv0smu8" path="res://assets/window.png" id="3_con2f"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -14,31 +16,54 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yqeox")
 
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576.5, 327)
+scale = Vector2(0.7829932, 0.6551021)
+texture = ExtResource("2_mhnvy")
+
 [node name="StartGame" type="Button" parent="."]
 layout_mode = 0
-offset_left = 480.0
-offset_top = 232.0
-offset_right = 648.0
-offset_bottom = 256.0
+offset_left = 464.0
+offset_top = 288.0
+offset_right = 632.0
+offset_bottom = 312.0
+theme_override_colors/font_color = Color(0.18431373, 0.1882353, 0.23137255, 1)
 theme_override_fonts/font = ExtResource("2_vjb58")
 text = "Start Game"
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StartGame"]
+show_behind_parent = true
+position = Vector2(83.99998, 12.000003)
+scale = Vector2(1.5624999, 1.2499998)
+texture = ExtResource("3_con2f")
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 0
 offset_left = 520.0
-offset_top = 368.0
+offset_top = 384.0
 offset_right = 592.0
-offset_bottom = 392.0
+offset_bottom = 424.0
+theme_override_colors/font_color = Color(0.18431373, 0.1882353, 0.23137255, 1)
 theme_override_fonts/font = ExtResource("2_vjb58")
 text = "Quit"
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Quit"]
+show_behind_parent = true
+position = Vector2(31.999989, 20.00001)
+scale = Vector2(0.74999994, 1.2500006)
+texture = ExtResource("3_con2f")
 
 [node name="Difficulty" type="OptionButton" parent="."]
 layout_mode = 0
-offset_left = 496.0
-offset_top = 280.0
-offset_right = 624.0
-offset_bottom = 304.0
+offset_left = 488.0
+offset_top = 336.0
+offset_right = 616.0
+offset_bottom = 360.0
+theme_override_colors/font_color = Color(0.18431373, 0.1882353, 0.23137255, 1)
 theme_override_fonts/font = ExtResource("2_vjb58")
+flat = true
 selected = 0
 item_count = 3
 popup/item_0/text = "Easy"
@@ -48,16 +73,27 @@ popup/item_1/id = 1
 popup/item_2/text = "Hard"
 popup/item_2/id = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="Difficulty"]
+show_behind_parent = true
+position = Vector2(63.999973, 16.000004)
+scale = Vector2(1.2500002, 1.2499998)
+texture = ExtResource("3_con2f")
+
 [node name="Robot" type="CheckButton" parent="."]
 layout_mode = 0
-offset_left = 424.0
-offset_top = 328.0
-offset_right = 696.0
-offset_bottom = 352.0
+offset_left = 416.0
+offset_top = 232.0
+offset_right = 688.0
+offset_bottom = 256.0
 theme_override_fonts/font = ExtResource("2_vjb58")
 button_pressed = true
 text = "Robot opponent"
-flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Robot"]
+show_behind_parent = true
+position = Vector2(136.00003, 11.999982)
+scale = Vector2(2.5, 1.2500006)
+texture = ExtResource("3_con2f")
 
 [connection signal="button_down" from="StartGame" to="." method="_on_StartGame_pressed"]
 [connection signal="button_down" from="Quit" to="." method="_on_Quit_pressed"]

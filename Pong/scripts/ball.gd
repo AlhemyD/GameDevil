@@ -3,6 +3,7 @@ extends Node2D
 @export var speed: float = 200.0
 var velocity: Vector2 = Vector2.ZERO
 var rng = RandomNumberGenerator.new()
+var angular_velocity: float = 0.0
 @onready var window = get_window()
 
 # Ссылка на спрайт для размера
@@ -21,7 +22,7 @@ func _process(delta: float) -> void:
 	if global.game_ended:
 		return
 	var next_pos = global_position + velocity * delta
-
+	rotation += angular_velocity * delta
 	# верх/низ экрана
 	if next_pos.y - size.y/2 < 0:
 		next_pos.y = size.y/2
@@ -46,6 +47,9 @@ func _process(delta: float) -> void:
 			var offset = (next_pos.y - paddle_pos.y) / paddle_shape.extents.y
 			velocity.y = offset * speed
 			velocity = velocity.normalized() * speed
+			
+			angular_velocity = rng.randf_range(-20, 20)
+			
 			# чтобы не застрял внутри ракетки
 			if paddle == paddle_left:
 				next_pos.x = paddle_pos.x + paddle_shape.extents.x + size.x/2
@@ -69,3 +73,4 @@ func reset_ball():
 	var dir_x = -1 if rng.randi_range(0, 1) == 0 else 1
 	var dir_y = rng.randf_range(-0.5, 0.5)
 	velocity = Vector2(dir_x, dir_y).normalized() * speed
+	angular_velocity = rng.randf_range(-20, 20)

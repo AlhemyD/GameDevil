@@ -35,9 +35,9 @@ func _process(_delta):
 			elif global.count_left < global.count_right:
 				winner.text="Right wins"
 			else:
-				winner.tet="Draw"
+				winner.text="Draw"
+			winner.text+="\nPress any button"
 			winner.visible = true
-			
 	else:
 		if Input.is_anything_pressed():
 			global.count_left=0
@@ -45,3 +45,4 @@ func _process(_delta):
 			winner.visible=false
 			global.game_ended = false
 			get_tree().change_scene_to_file("res://scenes/menu.tscn")
+			
