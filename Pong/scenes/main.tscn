@@ -1,22 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ceu771rqxpk0b"]
+[gd_scene load_steps=6 format=3 uid="uid://ceu771rqxpk0b"]
 
 [ext_resource type="PackedScene" uid="uid://bkgsgplmdrdk4" path="res://scenes/ball.tscn" id="1_o5qli"]
 [ext_resource type="Script" uid="uid://clkf6ipbxuqxm" path="res://scripts/main.gd" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://coimwreiboshf" path="res://scenes/Paddle.tscn" id="2_sugp2"]
 [ext_resource type="Texture2D" uid="uid://5vgand2e22qs" path="res://assets/background.jpg" id="2_tbgi4"]
 [ext_resource type="FontFile" uid="uid://cpnhii765sy4o" path="res://assets/atariclassic-regular.ttf" id="4_jyhfs"]
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_o5qli"]
-b = Vector2(0, 648)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_0wfyh"]
-b = Vector2(0, 648)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_sugp2"]
-b = Vector2(1152, 0)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_jyhfs"]
-b = Vector2(1152, 0)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_sugp2")
@@ -29,22 +17,6 @@ texture = ExtResource("2_tbgi4")
 [node name="Ball" parent="." instance=ExtResource("1_o5qli")]
 position = Vector2(368, 102)
 speed = 500.0
-
-[node name="WallsStaticBody" type="StaticBody2D" parent="."]
-
-[node name="LeftWall" type="CollisionShape2D" parent="WallsStaticBody"]
-shape = SubResource("SegmentShape2D_o5qli")
-
-[node name="RightWall" type="CollisionShape2D" parent="WallsStaticBody"]
-position = Vector2(1152, 0)
-shape = SubResource("SegmentShape2D_0wfyh")
-
-[node name="Bottom" type="CollisionShape2D" parent="WallsStaticBody"]
-position = Vector2(0, 648)
-shape = SubResource("SegmentShape2D_sugp2")
-
-[node name="Up" type="CollisionShape2D" parent="WallsStaticBody"]
-shape = SubResource("SegmentShape2D_jyhfs")
 
 [node name="PaddleRight" parent="." instance=ExtResource("2_sugp2")]
 position = Vector2(998, 324)

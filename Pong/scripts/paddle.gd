@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 		elif ball.position.y < position.y:
 			
 			position.y -= speed*delta
-		
+		position.y = clamp(position.y, top_limit, bottom_limit)
 	
 		
 
