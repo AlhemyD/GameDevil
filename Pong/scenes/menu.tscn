@@ -41,9 +41,9 @@ texture = ExtResource("3_con2f")
 [node name="Quit" type="Button" parent="."]
 layout_mode = 0
 offset_left = 520.0
-offset_top = 384.0
+offset_top = 433.0
 offset_right = 592.0
-offset_bottom = 424.0
+offset_bottom = 473.0
 theme_override_colors/font_color = Color(0.18431373, 0.1882353, 0.23137255, 1)
 theme_override_fonts/font = ExtResource("2_vjb58")
 text = "Quit"
@@ -58,9 +58,9 @@ texture = ExtResource("3_con2f")
 [node name="Difficulty" type="OptionButton" parent="."]
 layout_mode = 0
 offset_left = 488.0
-offset_top = 336.0
+offset_top = 337.0
 offset_right = 616.0
-offset_bottom = 360.0
+offset_bottom = 361.0
 theme_override_colors/font_color = Color(0.18431373, 0.1882353, 0.23137255, 1)
 theme_override_fonts/font = ExtResource("2_vjb58")
 flat = true
@@ -75,7 +75,7 @@ popup/item_2/id = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Difficulty"]
 show_behind_parent = true
-position = Vector2(63.999973, 16.000004)
+position = Vector2(63.99997, 14)
 scale = Vector2(1.2500002, 1.2499998)
 texture = ExtResource("3_con2f")
 
@@ -93,6 +93,29 @@ text = "Robot opponent"
 show_behind_parent = true
 position = Vector2(136.00003, 11.999982)
 scale = Vector2(2.5, 1.2500006)
+texture = ExtResource("3_con2f")
+
+[node name="PaddleType" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 490.0
+offset_top = 385.0
+offset_right = 611.0
+offset_bottom = 429.0
+
+[node name="PaddleTypeLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 502.0
+offset_top = 393.0
+offset_right = 602.0
+offset_bottom = 416.0
+theme_override_colors/font_color = Color(0.18431373, 0.1882353, 0.23137255, 1)
+theme_override_fonts/font = ExtResource("2_vjb58")
+text = "Paddle"
+
+[node name="Sprite2D" type="Sprite2D" parent="PaddleTypeLabel"]
+show_behind_parent = true
+position = Vector2(49, 13)
+scale = Vector2(0.9687502, 1.3125007)
 texture = ExtResource("3_con2f")
 
 [connection signal="button_down" from="StartGame" to="." method="_on_StartGame_pressed"]

@@ -1,7 +1,6 @@
-extends Node2D
+extends CharacterBody2D
 
 @export var speed: float = 200.0
-var velocity: Vector2 = Vector2.ZERO
 var rng = RandomNumberGenerator.new()
 var angular_velocity: float = 0.0
 @onready var window = get_window()

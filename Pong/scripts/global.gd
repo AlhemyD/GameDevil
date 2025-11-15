@@ -4,6 +4,7 @@ const WINNING_SCORE: int = 5
 
 var difficulty: int = 1
 var robot: bool = true
+var paddle_type: int = 0 
 
 var game_ended: bool = false
 

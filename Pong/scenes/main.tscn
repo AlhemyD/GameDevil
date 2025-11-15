@@ -31,6 +31,7 @@ position = Vector2(368, 102)
 speed = 500.0
 
 [node name="WallsStaticBody" type="StaticBody2D" parent="."]
+disable_mode = 1
 
 [node name="LeftWall" type="CollisionShape2D" parent="WallsStaticBody"]
 shape = SubResource("SegmentShape2D_o5qli")

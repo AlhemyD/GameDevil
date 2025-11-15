@@ -6,14 +6,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_cxlvu"]
 radius = 16.0
 
-[node name="Ball" type="Node2D"]
+[node name="Ball" type="CharacterBody2D"]
 script = ExtResource("1_7s4qf")
 metadata/_edit_group_ = true
 
 [node name="BallSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_cxlvu")
 
-[node name="BallStaticBody" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BallStaticBody"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cxlvu")
