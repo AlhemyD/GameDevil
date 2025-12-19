@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://qf7426rko4j2"]
+
+[ext_resource type="PackedScene" uid="uid://c8kh8a6ntctqi" path="res://Scenes/UI/on_screen_equipment_slot.tscn" id="1_cuvqx"]
+[ext_resource type="Script" uid="uid://m3hg5v1u4oau" path="res://Scripts/on_screen_ui.gd" id="1_fl3s6"]
+[ext_resource type="StyleBox" uid="uid://ctps3h5nmtrgy" path="res://Resources/UI/health_bar_background.tres" id="2_nglw6"]
+[ext_resource type="StyleBox" uid="uid://dheff6jx62idr" path="res://Resources/UI/health_bar_fill.tres" id="3_8sqex"]
+
+[node name="OnScreenUI" type="CanvasLayer"]
+script = ExtResource("1_fl3s6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/background = ExtResource("2_nglw6")
+theme_override_styles/fill = ExtResource("3_8sqex")
+value = 100.0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="RightHandSlot" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_cuvqx")]
+unique_name_in_owner = true
+layout_mode = 2
+slot_name = "Right Hand"
+
+[node name="LeftHandSlot" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_cuvqx")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+slot_name = "Left Hand"
+
+[node name="PotionSlot" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_cuvqx")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+slot_name = "Potion"
+
+[node name="SpellSlot" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_cuvqx")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+slot_name = "Spell"

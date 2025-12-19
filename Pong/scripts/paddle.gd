@@ -7,6 +7,9 @@ extends StaticBody2D
 
 @onready var ball = get_parent().get_node("Ball")
 @onready var sprite = $Sprite2D 
+@onready var classic = load("res://assets/paddle_classic.png")
+@onready var modern = load("res://assets/paddle_modern.png")
+@onready var retro = load("res://assets/paddle_retro.png")
 
 var top_limit: float
 var bottom_limit: float
@@ -26,18 +29,14 @@ func apply_paddle_style():
 	speed = 400.0
 	
 	var texture: Texture2D
-	var texture_path: String
 	
 	match global.paddle_type:
 		0:
-			texture_path = "res://assets/paddle_classic.png"
+			texture = classic
 		1:
-			texture_path = "res://assets/paddle_modern.png"
+			texture = modern
 		2:
-			texture_path = "res://assets/paddle_retro.png"
-	
-	if FileAccess.file_exists(texture_path):
-		texture = load(texture_path)
+			texture = retro
 	
 	if sprite and texture:
 		sprite.texture = texture

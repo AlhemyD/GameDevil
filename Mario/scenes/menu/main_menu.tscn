@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgcwfkm5g0wxx"]
+
+[ext_resource type="Script" uid="uid://dek4ax5x32d00" path="res://scenes/menu/main_menu.gd" id="1_3y6v8"]
+[ext_resource type="FontFile" uid="uid://c177hihe5eylu" path="res://addons/atariclassic-regular.ttf" id="2_247la"]
+[ext_resource type="PackedScene" uid="uid://ded5o88n4apxa" path="res://scenes/background/background.tscn" id="2_j0a7s"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_3y6v8")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 238.0
+offset_top = 271.0
+offset_right = 834.0
+offset_bottom = 404.0
+theme_override_fonts/font = ExtResource("2_247la")
+text = "Play"
+
+[node name="Background" parent="." instance=ExtResource("2_j0a7s")]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8tluu1g5et8p"]
+
+[ext_resource type="PackedScene" uid="uid://biih50hntfarg" path="res://objects/bonuses/item/item.tscn" id="1_k4j4e"]
+[ext_resource type="Script" uid="uid://cilopftu5e8i4" path="res://objects/bonuses/elixirOfGigants/elixir_of_gigants.gd" id="2_v8jap"]
+[ext_resource type="Texture2D" uid="uid://d3x0yeigc4ch5" path="res://objects/bonuses/elixirOfGigants/1.png" id="3_k3tju"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvimm"]
+size = Vector2(19, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ts5c7"]
+size = Vector2(19, 19.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a21ts"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_k3tju")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ElixirOfGigants" instance=ExtResource("1_k4j4e")]
+position = Vector2(0, -1)
+script = ExtResource("2_v8jap")
+
+[node name="ColorRect" type="ColorRect" parent="." index="0"]
+visible = false
+offset_right = 10.0
+offset_bottom = 15.0
+color = Color(0.92979, 0.495143, 0.915971, 1)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(7.5, 10)
+shape = SubResource("RectangleShape2D_bvimm")
+disabled = true
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-12.5, -9.75)
+shape = SubResource("RectangleShape2D_ts5c7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(7.77891, 10.311)
+scale = Vector2(0.0388704, 0.0388704)
+sprite_frames = SubResource("SpriteFrames_a21ts")
+frame_progress = 0.81853133

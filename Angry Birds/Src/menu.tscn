@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://b660se5seiqcw"]
+
+[ext_resource type="Script" uid="uid://c6iob2gxxi14o" path="res://Src/menu.gd" id="1_ftqw1"]
+[ext_resource type="Texture2D" uid="uid://dtsgmxeponjte" path="res://assets/GUI/background_menu.png" id="2_kjcpa"]
+[ext_resource type="Theme" uid="uid://ddgchl87jybtg" path="res://default_button.tres" id="3_d457f"]
+[ext_resource type="AudioStream" uid="uid://hbawywonuvu4" path="res://sounds/christmas-menu.mp3" id="3_kfoww"]
+[ext_resource type="AudioStream" uid="uid://dc3ducdd1q5ka" path="res://sounds/button.mp3" id="5_puvif"]
+[ext_resource type="AudioStream" uid="uid://caog2kl2pov1n" path="res://sounds/bubble-sound.mp3" id="6_586ml"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_ftqw1")
+
+[node name="BackgroundMenu" type="Sprite2D" parent="."]
+position = Vector2(575.79, 324.071)
+scale = Vector2(0.450164, 0.449902)
+texture = ExtResource("2_kjcpa")
+
+[node name="Play" type="Button" parent="."]
+offset_left = 414.0
+offset_top = 548.0
+offset_right = 696.0
+offset_bottom = 642.0
+theme = ExtResource("3_d457f")
+theme_override_font_sizes/font_size = 50
+text = "ИГРАТЬ"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 12.0
+offset_top = 7.0
+offset_right = 174.0
+offset_bottom = 81.0
+theme = ExtResource("3_d457f")
+theme_override_font_sizes/font_size = 35
+text = "Выход"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kfoww")
+volume_db = -15.0
+autoplay = true
+
+[node name="ClickButton" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_puvif")
+volume_db = -15.0
+bus = &"Sounds"
+
+[node name="HoverButton" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_586ml")
+volume_db = -10.0
+bus = &"Sounds"
+
+[connection signal="mouse_entered" from="Play" to="." method="_on_play_mouse_entered"]
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="Quit" to="." method="_on_quit_mouse_entered"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

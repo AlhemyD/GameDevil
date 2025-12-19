@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://c773quia3nrqo"]
+
+[ext_resource type="Script" uid="uid://ds7nplf8j1tey" path="res://Scripts/chest.gd" id="1_3rrro"]
+[ext_resource type="Texture2D" uid="uid://2kvh11t3tpxa" path="res://Assets/Sprites/Items/Treasure/LittleTreasureChest.png" id="2_cjfl1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7pcwy"]
+size = Vector2(18, 14)
+
+[node name="Chest" type="Node2D"]
+script = ExtResource("1_3rrro")
+
+[node name="ClosedState" type="Sprite2D" parent="."]
+texture = ExtResource("2_cjfl1")
+region_enabled = true
+region_rect = Rect2(0.80667305, 3.8357964, 14.146038, 11.649679)
+
+[node name="OpenState" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_cjfl1")
+region_enabled = true
+region_rect = Rect2(17.179474, 0.89241886, 13.868668, 14.562099)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_7pcwy")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

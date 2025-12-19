@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://x56q3ukt6cx1"]
+
+[ext_resource type="Script" path="res://scenes/Entity/damageable.gd" id="1_126id"]
+[ext_resource type="Texture2D" uid="uid://culn12sho2tac" path="res://assets/gameplay/snowflake.png" id="1_adiq6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t6eq8"]
+radius = 22.0227
+
+[node name="Damageable" type="RigidBody2D" groups=["Projectile"]]
+contact_monitor = true
+max_contacts_reported = 7
+script = ExtResource("1_126id")
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.0703125, 0.0703125)
+texture = ExtResource("1_adiq6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_t6eq8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

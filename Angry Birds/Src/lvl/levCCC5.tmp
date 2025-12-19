@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://bux72aj3tylcb"]
+
+[ext_resource type="Script" path="res://Src/lvl/level.gd" id="1_jngdw"]
+[ext_resource type="Texture2D" uid="uid://dcslxfs13d6jv" path="res://assets/gameplay/background_1.png" id="1_kgmwj"]
+[ext_resource type="PackedScene" uid="uid://cvyaobdfor4na" path="res://scenes/Entity/shells/snowflake.tscn" id="2_414va"]
+[ext_resource type="PackedScene" uid="uid://8uir2rn83mca" path="res://scenes/Entity/enemies/enemy.tscn" id="3_6p40u"]
+[ext_resource type="PackedScene" uid="uid://vh6f7wmracd4" path="res://scenes/Entity/shells/slingshot.tscn" id="4_xqbtd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gn67w"]
+size = Vector2(79.75, 648)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_jngdw")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("1_kgmwj")
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(568, 600)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
+polygon = PackedVector2Array(-568, -40, -292.82, -40, 584, -40, 584, 48, -568, 48)
+
+[node name="EastWall" type="StaticBody2D" parent="."]
+position = Vector2(1224, 280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EastWall"]
+position = Vector2(-32.125, 44)
+shape = SubResource("RectangleShape2D_gn67w")
+
+[node name="WastWall" type="StaticBody2D" parent="."]
+position = Vector2(1224, 280)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WastWall"]
+position = Vector2(-1264.25, 44)
+shape = SubResource("RectangleShape2D_gn67w")
+
+[node name="Snowflakes" type="Node2D" parent="."]
+position = Vector2(144, 552)
+
+[node name="Snowflake" parent="." instance=ExtResource("2_414va")]
+position = Vector2(88, 514)
+
+[node name="Enemies" type="Node2D" parent="."]
+position = Vector2(888, 552)
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("3_6p40u")]
+position = Vector2(88, -32)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("3_6p40u")]
+position = Vector2(40, -32)
+
+[node name="Slingshot" parent="." instance=ExtResource("4_xqbtd")]
+position = Vector2(272, 520)

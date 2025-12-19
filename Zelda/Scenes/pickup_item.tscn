@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cff0g4dgincf3"]
+
+[ext_resource type="Script" uid="uid://dqqkgvw1847nu" path="res://Scripts/pickup_item.gd" id="1_w4m05"]
+[ext_resource type="Shape2D" uid="uid://lq7tarijbnur" path="res://Resources/Weapons/SpellBook/spell_book_ground_collision_shape.tres" id="3_wgs4g"]
+
+[node name="PickUpItem" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_w4m05")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = ExtResource("3_wgs4g")

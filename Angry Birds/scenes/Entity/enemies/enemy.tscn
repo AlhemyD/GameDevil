@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://8uir2rn83mca"]
+
+[ext_resource type="Script" uid="uid://cyqpsvcu4mqg1" path="res://scenes/Entity/enemies/enemy.gd" id="1_hqcwi"]
+[ext_resource type="Texture2D" uid="uid://cb5wrk6fwpchf" path="res://assets/gameplay/New Piskel(1).png" id="2_h7t7j"]
+[ext_resource type="Script" uid="uid://cl5e6mac74q2b" path="res://scenes/Entity/enemies/texture.gd" id="3_bd7pg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gofib"]
+size = Vector2(80.5, 84)
+
+[node name="Enemy" type="RigidBody2D" groups=["Enemy"]]
+max_contacts_reported = 7
+script = ExtResource("1_hqcwi")
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-3.5000064, 0)
+scale = Vector2(0.1357422, 0.120949)
+texture = ExtResource("2_h7t7j")
+hframes = 2
+vframes = 3
+frame = 4
+script = ExtResource("3_bd7pg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.25, 0)
+shape = SubResource("RectangleShape2D_gofib")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=5 format=3 uid="uid://chgjgwqutooq0"]
+
+[ext_resource type="Shape2D" uid="uid://b1jqsgwbjf82c" path="res://Resources/Weapons/Sword/sword_ground_collision.tres" id="1_6tqxo"]
+[ext_resource type="Script" uid="uid://cxpijf0s3qgp1" path="res://Scripts/inventory_item.gd" id="1_13vpw"]
+[ext_resource type="Texture2D" uid="uid://c6dvnxnbfhx17" path="res://Assets/Sprites/Items/Weapons/Lance/Sprite.png" id="3_00ybc"]
+[ext_resource type="Resource" uid="uid://bgtefphivn2ua" path="res://Resources/Weapons/Sword/sword_weapon_item.tres" id="4_g3cat"]
+
+[resource]
+script = ExtResource("1_13vpw")
+slot_type = "Right_Hand"
+ground_collision_shape = ExtResource("1_6tqxo")
+name = "Spear"
+texture = ExtResource("3_00ybc")
+max_stacks = 1
+price = 90
+weapon_item = ExtResource("4_g3cat")

@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://dol1sro348fd"]
+
+[ext_resource type="PackedScene" uid="uid://de4bhygft4esq" path="res://objects/enemy/base_mode_enemy/base_move_enemy.tscn" id="1_kxhch"]
+[ext_resource type="Script" uid="uid://b7ypanowh0hke" path="res://objects/enemy/bat/bat.gd" id="2_erwd5"]
+[ext_resource type="Texture2D" uid="uid://db8yqcwuutld" path="res://objects/enemy/bat/Bat_Sprite_Sheet.png" id="3_jt8gh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3m3o"]
+atlas = ExtResource("3_jt8gh")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uldl"]
+atlas = ExtResource("3_jt8gh")
+region = Rect2(16, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai4hu"]
+atlas = ExtResource("3_jt8gh")
+region = Rect2(32, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1qvl"]
+atlas = ExtResource("3_jt8gh")
+region = Rect2(48, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_781xv"]
+atlas = ExtResource("3_jt8gh")
+region = Rect2(64, 0, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xdwcc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3m3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7uldl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai4hu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1qvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_781xv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xgmft"]
+size = Vector2(23, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bcal"]
+size = Vector2(25, 23)
+
+[node name="Bat" instance=ExtResource("1_kxhch")]
+script = ExtResource("2_erwd5")
+start_point = Vector2(0, 0)
+end_point = Vector2(0, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(19, 18)
+scale = Vector2(1.625, 1.625)
+sprite_frames = SubResource("SpriteFrames_xdwcc")
+frame_progress = 0.338745
+
+[node name="ColorRect" parent="." index="1"]
+visible = false
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(17.5, 8.5)
+shape = SubResource("RectangleShape2D_xgmft")
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(17.5, 8.5)
+shape = SubResource("RectangleShape2D_6bcal")

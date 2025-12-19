@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://coimwreiboshf"]
+[gd_scene load_steps=4 format=3 uid="uid://coimwreiboshf"]
 
 [ext_resource type="Script" uid="uid://cj6r8f5kt4hid" path="res://scripts/paddle.gd" id="1_e6xuo"]
+[ext_resource type="Texture2D" uid="uid://donknu5sgn8aw" path="res://assets/paddle_classic.png" id="2_6kxou"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ry5ju"]
 size = Vector2(10, 60)
@@ -12,3 +13,4 @@ script = ExtResource("1_e6xuo")
 shape = SubResource("RectangleShape2D_ry5ju")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6kxou")
